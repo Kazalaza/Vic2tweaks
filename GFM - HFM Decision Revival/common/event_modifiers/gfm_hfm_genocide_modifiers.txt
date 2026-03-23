@@ -1,0 +1,7 @@
+gfm_hfm_recent_genocide = {
+	local_population_growth = -0.15
+	local_rgo_output = -0.25
+	local_factory_output = -0.20
+	local_life_rating = -5
+	local_migration_modifier = -0.30
+}

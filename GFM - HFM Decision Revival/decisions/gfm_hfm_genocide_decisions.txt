@@ -1,0 +1,63 @@
+political_decisions = {
+
+	gfm_hfm_commit_genocide = {
+		picture = "reactionary"
+
+		potential = {
+			is_civilized = yes
+			OR = {
+				government = fascist_dictatorship
+				government = proletarian_dictatorship
+				ruling_party_ideology = reactionary
+				ruling_party_ideology = fascist
+				ruling_party_ideology = communist
+			}
+			year = 1900
+			any_owned = {
+				any_pop = {
+					NOT = { is_primary_culture = yes }
+					NOT = { is_accepted_culture = yes }
+					size = 2000
+				}
+			}
+		}
+
+		allow = {
+			war = yes
+			NOT = { war_exhaustion = 8 }
+			plurality = 0.10
+			NOT = { infamy = 75 }
+		}
+
+		effect = {
+			country_event = 4434
+			infamy = 30
+			prestige = -10
+			militancy = 2
+		}
+
+		ai_will_do = {
+			factor = 0.1
+			modifier = {
+				factor = 4
+				war = yes
+			}
+			modifier = {
+				factor = 3
+				government = fascist_dictatorship
+			}
+			modifier = {
+				factor = 2
+				jingoism = 0.25
+			}
+			modifier = {
+				factor = 0.2
+				war_exhaustion = 5
+			}
+			modifier = {
+				factor = 0.1
+				NOT = { war = yes }
+			}
+		}
+	}
+}

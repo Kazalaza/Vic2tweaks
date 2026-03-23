@@ -1,0 +1,142 @@
+namespace = gfm_hfm
+
+country_event = {
+	id = 4434
+	title = "gfm_hfm_genocide.1.t"
+	desc = "gfm_hfm_genocide.1.d"
+	picture = "reactionary_rebels"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "gfm_hfm_genocide.1.a"
+		ai_chance = {
+			factor = 60
+		}
+		set_country_flag = gfm_hfm_target_culture
+		country_event = 4435
+	}
+
+	option = {
+		name = "gfm_hfm_genocide.1.b"
+		ai_chance = {
+			factor = 40
+		}
+		set_country_flag = gfm_hfm_target_religion
+		country_event = 4435
+	}
+
+	option = {
+		name = "gfm_hfm_genocide.1.c"
+		ai_chance = {
+			factor = 0
+		}
+		infamy = -30
+		prestige = -5
+	}
+}
+
+country_event = {
+	id = 4435
+	title = "gfm_hfm_genocide.2.t"
+	desc = "gfm_hfm_genocide.2.d"
+	picture = "massacre"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "gfm_hfm_genocide.2.a"
+		ai_chance = {
+			factor = 100
+		}
+		if = {
+			limit = { has_country_flag = gfm_hfm_target_culture }
+			every_owned = {
+				limit = {
+					any_pop = {
+						NOT = { is_primary_culture = yes }
+						NOT = { is_accepted_culture = yes }
+						size = 1000
+					}
+				}
+				every_pop = {
+					limit = {
+						NOT = { is_primary_culture = yes }
+						NOT = { is_accepted_culture = yes }
+					}
+					reduce_pop = 0.80
+					militancy = 3
+					consciousness = 2
+				}
+				add_province_modifier = {
+					name = gfm_hfm_recent_genocide
+					duration = 3650
+				}
+			}
+		}
+		if = {
+			limit = { has_country_flag = gfm_hfm_target_religion }
+			every_owned = {
+				limit = {
+					any_pop = {
+						is_state_religion = no
+						size = 1000
+					}
+				}
+				every_pop = {
+					limit = {
+						is_state_religion = no
+					}
+					reduce_pop = 0.75
+					militancy = 3
+					consciousness = 2
+				}
+				add_province_modifier = {
+					name = gfm_hfm_recent_genocide
+					duration = 2920
+				}
+			}
+		}
+		every_country = {
+			limit = {
+				is_civilized = yes
+			}
+			relation = {
+				who = THIS
+				value = -50
+			}
+		}
+		militancy = 2
+		consciousness = 1
+		prestige = -15
+		badboy = 10
+		country_event = 4436
+		clr_country_flag = gfm_hfm_target_culture
+		clr_country_flag = gfm_hfm_target_religion
+	}
+}
+
+country_event = {
+	id = 4436
+	title = "gfm_hfm_genocide.3.t"
+	desc = "gfm_hfm_genocide.3.d"
+	picture = "newspaper"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "gfm_hfm_genocide.3.a"
+		ai_chance = {
+			factor = 100
+		}
+		random_owned = {
+			limit = {
+				is_state = yes
+			}
+			spawn_rebels = {
+				type = communist_rebels
+				size = 3
+			}
+		}
+	}
+}
