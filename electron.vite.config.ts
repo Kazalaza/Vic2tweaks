@@ -15,6 +15,13 @@ export default defineConfig({
         '@': path.resolve(__dirname, 'src/renderer')
       }
     },
+    build: {
+      rollupOptions: {
+        input: {
+          index: path.resolve(__dirname, 'src/renderer/index.html')
+        }
+      }
+    },
     plugins: [react()]
   }
 });
