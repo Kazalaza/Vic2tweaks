@@ -32,11 +32,31 @@ npm install
 npm run dev
 ```
 
-## Build
+## Build (production bundles)
 
 ```bash
 npm run build
 ```
+
+## Package as a real Windows app (installer + portable)
+
+```bash
+npm run dist
+```
+
+Artifacts are generated under `dist/`:
+- `Victoria II Modern Launcher-<version>.exe` (NSIS installer)
+- `Victoria II Modern Launcher-<version>-portable.exe` (portable app)
+
+## Optional: App icon
+
+Place a Windows icon at:
+
+```text
+build/icon.ico
+```
+
+The `build/` directory is already configured as Electron Builder resources directory.
 
 ## Project structure
 
@@ -50,6 +70,7 @@ src/
     pages/
     lib/
     types/
+build/          # Electron Builder resources (icon, etc.)
 ```
 
 ## Usage
